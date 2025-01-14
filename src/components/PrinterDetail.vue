@@ -26,8 +26,15 @@
     methods: {
       async fetchPrinterDetails() {
         if (this.printerId) {
-          const response = await fetch(`/api/printers/${this.printerId}`);
-          this.printer = await response.json();
+          try {
+            const response = await fetch(`http://${this.printerId}/printer/info`);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.printer = await response.json();
+          } catch (error) {
+            console.error('Error fetching printer details:', error);
+          }
         }
       }
     },

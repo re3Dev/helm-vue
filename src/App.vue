@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Printer Fleet Management</h1>
+      <h1>HELM</h1>
     </header>
     <main>
       <router-view @select-printer="onPrinterSelect" />
