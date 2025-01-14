@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <header>
+      <h1>Printer Fleet Management</h1>
+    </header>
+    <main>
+      <router-view @select-printer="onPrinterSelect" />
+    </main>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  methods: {
+    onPrinterSelect(id) {
+      this.$router.push(`/printer/${id}`);
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #42b983;
+  color: white;
+  padding: 20px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+main {
+  padding: 20px;
 }
 </style>
+
